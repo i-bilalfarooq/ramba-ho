@@ -8,12 +8,20 @@
   ],
   "scripts": {
     "web": "npm run dev -w apps/web",
-    "mobile": "npm run start -w apps/mobile",
+    "mobile": "cd apps/mobile && npx expo start",
+    "seller-mobile": "cd apps/seller-mobile && npx expo start",
     "api": "npm run start:dev -w apps/api",
-    "build": "npm run build --workspaces"
+    "build": "npm run build --workspaces",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "expo": "~54.0.30",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  }
 }

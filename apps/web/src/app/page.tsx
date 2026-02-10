@@ -1,6 +1,9 @@
+'use client';
+
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Image from 'next/image';
+import SellerDashboard from '@/components/SellerDashboard';
+import { useState } from 'react';
 
 const RECENT_ITEMS = [
   { id: 1, title: 'Toyota Camry Brake Pads', price: 'AED 150', location: 'Sharjah Industrial', image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=400' },
@@ -11,6 +14,12 @@ const RECENT_ITEMS = [
 ];
 
 export default function Home() {
+  const [isSellerMode, setIsSellerMode] = useState(false);
+
+  if (isSellerMode) {
+    return <SellerDashboard onBackToUser={() => setIsSellerMode(false)} />;
+  }
+
   return (
     <main className="min-h-screen bg-gray-50">
       <Header />
@@ -60,7 +69,10 @@ export default function Home() {
             <p className="text-blue-100 text-lg mb-8 max-w-md">
               Reach thousands of buyers in UAE. List your items for free today.
             </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-xl active:scale-95">
+            <button 
+              onClick={() => setIsSellerMode(true)}
+              className="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-xl active:scale-95"
+            >
               Get started now
             </button>
           </div>
